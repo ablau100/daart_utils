@@ -1,0 +1,26 @@
+# name of directory containing input data: 'markers' | 'features'
+input_type: markers
+
+# number of classes (including background) # 6+(5-2) = n_total_classes
+output_size: 4
+
+n_observed_classes: 4
+
+# number of augmented classes
+n_aug_classes: 0
+
+# index to ignore
+ignore_class: -1
+
+
+
+# experiment ids
+expt_ids:
+    - ssm_v1
+
+# base data directory
+data_dir: /Users/blau/Projects/daart_utils/data/ssm/
+
+# base results directory
+results_dir: /Users/blau/Projects/daart/results_gmdgm/
+

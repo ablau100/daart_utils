@@ -1,0 +1,82 @@
+# general model class
+# segmenter | [todo: gmdgm]
+model_class: rslds
+
+# backbone network architecture for encoders/decoders
+# temporal-mlp | lstm | gru | dtcn
+backbone: dtcn
+
+backbone_inference: dtcn
+
+backbone_generative: dtcn
+
+# hidden layers for both classifier and predictor networks
+n_hid_layers: 2
+
+# hidden units per layer 
+n_hid_units: 2
+
+# half-width of temporal convolution window for temporal-mlp, tcns
+n_lags: 4
+
+# layer nonlinearity
+activation: lrelu
+
+# bidirectionality of RNNs (LSTM, GRU)
+bidirectional: true
+
+# dropout for individual channels of dilated TCN models (soon to be for others)
+dropout: 0.1
+
+# classifier type: binary | multiclass
+classifier_type: multiclass
+
+# hyperparam on classifying heuristic labels OR pseudo labels
+lambda_weak: 0
+
+# hyperparam on classifying strong labels
+lambda_strong: 10
+
+# hyperparam on reconstructing input
+lambda_recon: 0
+
+# hyperparam on next-step-ahead prediciton
+lambda_pred: 1
+
+# hyperparam on task programming regression loss
+lambda_task: 0
+
+# name of experiment for test-tube organizing
+tt_experiment_name: rpca_v1
+
+# control initialization of model
+rng_seed_model: 0
+
+# true to fit a variational version of the model where latent embeddings are sampled from gaussian
+variational: false
+
+# define epochs where kl for p(z|y) weights begin and end linear annealing
+anneal_start: 25
+anneal_end: 125
+
+# define epochs where kl fpr p(y) weights begin and end linear annealing
+anneal_start_y: 25
+anneal_end_y: 125
+
+# hyperparam on kl loss
+kl_weight: .1
+
+# hyperparam on kl q(y|x) loss
+kl_y_weight: 10
+
+# SEMI-SUPERVISION PARAMS
+# -----------------------
+
+# define which semi-supervised algorithm to use
+# null | pseudo_labels
+semi_supervised_algo: null
+
+# fixed probability threshold for pseudo-labels algorithm
+prob_threshold: 0.9
+
+
