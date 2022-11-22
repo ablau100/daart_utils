@@ -2,7 +2,8 @@
 # ------------------
 
 # adam learning rate
-learning_rate: 0.0001
+learning_rate: 0.001
+#0.0001
 
 # length of temporally contiguous sequences #500
 sequence_length: 500
@@ -14,10 +15,10 @@ batch_size: 2
 l2_reg: 0
 
 # minimum number of training epochs
-min_epochs: 10000
+min_epochs: 30
 
 # maximum number of training epochs
-max_epochs: 10003
+max_epochs: 5003
 
 # frequency with which to log model performance on validation data
 val_check_interval: 1

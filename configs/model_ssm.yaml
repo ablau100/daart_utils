@@ -47,7 +47,7 @@ lambda_pred: 1
 lambda_task: 0
 
 # name of experiment for test-tube organizing
-tt_experiment_name: rpca_v1
+tt_experiment_name: m_v4
 
 # control initialization of model
 rng_seed_model: 0
@@ -67,7 +67,9 @@ anneal_end_y: 125
 kl_weight: .1
 
 # hyperparam on kl q(y|x) loss
-kl_y_weight: 10
+kl_y_weight: 100
+
+kl_y_weight_uniform: 20
 
 # SEMI-SUPERVISION PARAMS
 # -----------------------
@@ -78,5 +80,11 @@ semi_supervised_algo: null
 
 # fixed probability threshold for pseudo-labels algorithm
 prob_threshold: 0.9
+
+
+# temperature for q y
+qy_x_temperature: 1
+
+
 
 
