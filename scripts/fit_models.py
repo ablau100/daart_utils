@@ -126,7 +126,7 @@ def train_model(hparams):
             model = XGBClassifier(
                 n_estimators=2000, max_depth=3, learning_rate=0.1, objective='multi:softprob',
                 eval_metric='mlogloss', tree_method='hist', gamma=1, min_child_weight=1,
-                subsample=0.8, colsample_bytree=0.8, random_state=hparams['rng_seed_model'])
+                subsample=0.8, colsample_bytree=0.8, random_state=hparams['rng_seed_model'], num_class=8)
         logging.info(model)
 
         # -------------------------------------
@@ -134,6 +134,15 @@ def train_model(hparams):
         # -------------------------------------
         t_beg = time.time()
         # just select non-background points
+        # test data
+        print('data pre', data_mat_train.shape, data_mat_train)
+        print('data post', data_mat_train[label_mat_train > 0, :].shape, data_mat_train[label_mat_train > 0, :])
+        print('labels', label_mat_train[label_mat_train > 0].shape, label_mat_train[label_mat_train > 0][:40])
+        
+        unique, counts = np.unique(label_mat_train[label_mat_train > 0], return_counts=True)
+
+        print(np.asarray((unique, counts)).T)
+        
         model.fit(data_mat_train[label_mat_train > 0, :], label_mat_train[label_mat_train > 0])
         t_end = time.time()
         logging.info('Fit time: %.1f sec' % (t_end - t_beg))
